@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = function (config, app, passport) {
-
+console.log(config.get('root') + '/www/controllers/users');
   var users = require(config.get('root') + '/www/controllers/users');
 
   app.get('/signout', users.signout);
