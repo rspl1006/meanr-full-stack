@@ -17,7 +17,12 @@
   },
 
   "apiTest": {
+<<<<<<< b2af2dd959a144bde511965f41943db410b2b2bb
     "email": "net@citizen.com",
     "password": "abcdef"
+=======
+    "email": "ashish.patel@rishabhsoft.com",
+    "password": "rspl123#"
+>>>>>>> First commit
   }
 }
