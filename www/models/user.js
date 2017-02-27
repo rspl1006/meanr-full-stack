@@ -5,8 +5,7 @@
  */
 var mongoose = require('mongoose'),
   Schema = mongoose.Schema,
-  scrypt = require('scrypt');
-  Schema = mongoose.Schema;
+  bcrypt = require('bcrypt');
 
 /**
  * User Schema
@@ -127,7 +126,7 @@ UserSchema.methods = {
    */
   authenticate: function (plainText) {
 //    return scrypt.verifyHashSync(this.hashedPassword, plainText);
-    return scrypt.verifyHashSync(this.password, plainText);
+    return bcrypt.compareSync(plainText, this.password);
   },
 
   /**
@@ -142,7 +141,8 @@ UserSchema.methods = {
       return '';
     }
     var maxtime = 0.1;
-    return scrypt.passwordHashSync(password, maxtime);
+    var salt = 10;
+    return bcrypt.hashSync(password,salt);
   }
 };
 
