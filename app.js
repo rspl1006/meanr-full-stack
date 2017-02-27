@@ -34,7 +34,7 @@ http.createServer(app).listen(app.get('port'), function () {
 });
 =======
 var server = http.createServer(app).listen(app.get('port'), function () {
-  msg = 'Express server listening on port ' + app.get('port') + ' in ' + env + ' mode';
+  msg = 'Express server listening on port  ' + app.get('port') + ' in ' + env + ' mode';
   logger.info(msg);
 });
 
