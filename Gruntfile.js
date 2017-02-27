@@ -369,7 +369,8 @@ module.exports = function (grunt) {
             'app/views/*.html',
             'app/views/**/*.html',
 
-            'www/views/articles/*.html'
+            'www/views/articles/*.html',
+            'www/views/devices/*.html'
           ]
         }
       }

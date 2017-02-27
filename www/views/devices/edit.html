@@ -1,0 +1,53 @@
+<div class="row">
+    <div class="small-8 columns" data-ng-show="global.currentUser()._id == device.user._id">
+
+        <form
+                name="deviceForm"
+                id="deviceForm"
+                novalidate="novalidate"
+                data-ng-submit="update()"
+                late-validate-form
+                display-server-side-errors>
+
+            <fieldset>
+                <legend translate>Edit Device</legend>
+
+                <label for="title" translate>Client SW No</label>
+                <input
+                        type="text"
+                        name="client_sw_no"
+                        id="client_sw_no"
+                        ng-model="device.client_sw_no" clear-server-side-validation/>
+                
+                <label for="title" translate>Client Dev No</label>
+                <input
+                        type="text"
+                        name="client_dev_no"
+                        id="client_dev_no"
+                        ng-model="device.client_dev_no" clear-server-side-validation/>
+
+                <label for="client_public_key" translate>Client Public Key</label>
+                <textarea
+                        name="client_public_key"
+                        id="client_public_key"
+                        ng-model="device.client_public_key" clear-server-side-validation/>
+                
+                <label for="client_certificate" translate>Client Certificate</label>
+                <textarea
+                        name="client_certificate"
+                        id="client_certificate"
+                        ng-model="device.client_certificate" clear-server-side-validation/>
+
+                <button type="submit" id="update" class="button round" ng-disabled="!canUpdate()" translate>Update</button>
+
+                <button type="button" id="delete" class="button tiny" ng-click="remove(device)" translate>Delete</button>
+
+            </fieldset>
+        </form>
+
+    </div>
+
+    <div class="small-4 columns">
+    </div>
+
+</div>

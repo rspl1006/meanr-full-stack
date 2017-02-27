@@ -1,0 +1,71 @@
+<div class="row">
+    <div class="small-8 columns">
+
+        <form
+                name="deviceForm"
+                id="deviceForm"
+                novalidate="novalidate"
+                data-ng-submit="create()"
+                late-validate-form
+                display-server-side-errors>
+
+            <fieldset>
+                <legend translate>Create Device</legend>
+
+                <label for="client_sw_no" translate>Client SW No</label>
+                <input
+                        type="text"
+                        name="client_sw_no"
+                        id="client_sw_no"
+                        ng-model="client_sw_no"
+                        ng-minlength="2"
+                        ng-maxlength="50"
+                        ng-required="true"
+                        clear-server-side-validation/>
+                <small class="error" ng-show="showClientSideValidationErrors(deviceForm.client_sw_no, 'minlength')">* Please use at least 2 characters
+                </small>
+                <label for="client_dev_no" translate>Client Dev No</label>
+                <input
+                        type="text"
+                        name="client_dev_no"
+                        id="client_dev_no"
+                        ng-model="client_dev_no"
+                        ng-minlength="2"
+                        ng-maxlength="50"
+                        ng-required="true"
+                        clear-server-side-validation/>
+                <small class="error" ng-show="showClientSideValidationErrors(deviceForm.client_dev_no, 'minlength')">* Please use at least 2 characters
+                </small>
+
+
+                <label for="client_public_key" translate>Client Public Key</label>
+                <textarea
+                        type="text"
+                        name="client_public_key"
+                        id="client_public_key"
+                        ng-model="client_public_key"
+                        ng-minlength="30"
+                        ng-required="true"
+                        clear-server-side-validation/>
+                
+                <label for="client_certificate" translate>Client Certificate</label>
+                <textarea
+                        type="text"
+                        name="client_certificate"
+                        id="client_certificate"
+                        ng-model="client_certificate"
+                        ng-minlength="30"
+                        ng-required="true"
+                        clear-server-side-validation/>
+
+                <button type="submit" id="create" class="button round" ng-disabled="!canSave()" translate>Create</button>
+
+            </fieldset>
+        </form>
+
+    </div>
+
+    <div class="small-4 columns">
+    </div>
+
+</div>

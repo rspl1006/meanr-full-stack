@@ -63,6 +63,26 @@
           templateUrl: 'views/articles/show.html',
           controller: 'ArticlesShowCtrl'
         }).
+           
+        when('/devices/create', {
+          templateUrl: '/devices/create',
+          controller: 'DevicesCreateCtrl'
+        }).
+
+        when('/devices/:deviceId/edit', {
+          templateUrl: '/devices/edit',
+          controller: 'DevicesEditCtrl'
+        }).
+
+        when('/devices/:deviceId', {
+          templateUrl: 'views/devices/show.html',
+          controller: 'DevicesShowCtrl'
+        }).
+                
+        when('/devices', {
+          templateUrl: 'views/devices/list.html',
+          controller: 'DevicesListCtrl'
+        }).
 
         otherwise({
           redirectTo: '/404'

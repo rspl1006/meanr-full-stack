@@ -73,3 +73,55 @@ exports.article = {
     });
   }
 };
+
+
+/**
+ * Device authorizations routing middleware
+ */
+var mongoose = require('mongoose'),
+  Device = mongoose.model('Device');
+
+function findOneDevice(deviceId, userId, callback) {
+
+  Device.load(deviceId, function (err, device) {
+    if (err) {
+      callback(true, null);
+    }
+    if (!device) {
+      callback(true, null);
+    }
+
+    // Compare the two IDs
+    if (device.user._id.toString() !== userId) {
+      callback(true, null);
+    } else {
+      callback(null, device);
+    }
+  });
+}
+
+/**
+ *
+ * @type {{hasAuthorization: Function}}
+ */
+exports.device = {
+  hasAuthorization: function (req, res, next) {
+
+    var deviceId = req.params.deviceId || req.body.deviceId;
+
+    // req.params validate the deviceId before getting here
+    // req.body does not validate at all so apply a check
+    if (deviceId === null || typeof deviceId === 'undefined' || !deviceId.toString().match(/^[0-9a-fA-F]{24}$/)) {
+      // req.body.deviceId is used in the image upload form which is text/html
+      return res.send(401);
+    }
+
+    findOneDevice(deviceId, req.user.id, function (err) {
+      if (err) {
+        return res.jsonp(401, {message: 'Not authorized'});
+      }
+      next();
+
+    });
+  }
+};

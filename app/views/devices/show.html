@@ -1,0 +1,31 @@
+<div class="row">
+
+    <div class="small-8 columns">
+
+        <p></p>
+
+        <table id="device">
+
+            <tr>
+                <td translate>Client SW No</td>
+                <td ng-bind="device.client_sw_no"></td>
+            </tr>
+            <tr>
+                <td translate>Client Dev No</td>
+                <td ng-bind="device.client_dev_no" style="white-space: pre-line"></td>
+            </tr>
+
+            <tfoot>
+            <tr>
+                <td nowrap="nowrap"><a class="button round" ng-click="go.back()"><i class="step fi-arrow-left size-60"></i>&nbsp;<span translate>Back</span></a></td>
+                <td><a class="tiny button" href="#!/devices/{{device._id}}/edit" id="edit" data-ng-show="global.currentUser()._id == device.user._id"><span translate>Edit</span></a></td>
+            </tr>
+            </tfoot>
+        </table>
+
+    </div>
+
+    <div class="small-4 columns">
+    </div>
+
+</div>
