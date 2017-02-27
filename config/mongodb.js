@@ -58,9 +58,5 @@ mongoose.connect(
 );
 
 // Bootstrap models
-<<<<<<< b2af2dd959a144bde511965f41943db410b2b2bb
-=======
-console.log(config.get('root'));
->>>>>>> First commit
 var requireModels = requireWalk(config.get('root') + '/www/models');
 requireModels();

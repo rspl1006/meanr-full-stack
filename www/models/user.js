@@ -4,12 +4,9 @@
  * Module dependencies.
  */
 var mongoose = require('mongoose'),
-<<<<<<< b2af2dd959a144bde511965f41943db410b2b2bb
   Schema = mongoose.Schema,
   scrypt = require('scrypt');
-=======
   Schema = mongoose.Schema;
->>>>>>> First commit
 
 /**
  * User Schema
@@ -130,11 +127,7 @@ UserSchema.methods = {
    */
   authenticate: function (plainText) {
 //    return scrypt.verifyHashSync(this.hashedPassword, plainText);
-<<<<<<< b2af2dd959a144bde511965f41943db410b2b2bb
     return scrypt.verifyHashSync(this.password, plainText);
-=======
-    return plainText;//scrypt.verifyHashSync(this.password, plainText);
->>>>>>> First commit
   },
 
   /**
@@ -149,11 +142,7 @@ UserSchema.methods = {
       return '';
     }
     var maxtime = 0.1;
-<<<<<<< b2af2dd959a144bde511965f41943db410b2b2bb
     return scrypt.passwordHashSync(password, maxtime);
-=======
-    return password;//scrypt.passwordHashSync(password, maxtime);
->>>>>>> First commit
   }
 };
 
