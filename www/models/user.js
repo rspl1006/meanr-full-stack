@@ -4,8 +4,7 @@
  * Module dependencies.
  */
 var mongoose = require('mongoose'),
-  Schema = mongoose.Schema,
-  scrypt = require('scrypt');
+  Schema = mongoose.Schema;
 
 /**
  * User Schema
