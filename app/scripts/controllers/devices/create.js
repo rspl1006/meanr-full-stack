@@ -37,7 +37,7 @@
             $scope.client_certificate = '';
 
             // locate to view path
-            $location.path('/devices/' + success._id);
+            $location.path('/app/devices-list');
           },
 
           function (error) {

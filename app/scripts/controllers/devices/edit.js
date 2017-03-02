@@ -3,7 +3,7 @@
 
   // Main page controller
   angular.module('meanr')
-    .controller('DevicesEditCtrl', function ($scope, Global, $cookies, Restangular, $routeParams, $location) {
+    .controller('DevicesEditCtrl', function ($scope, Global, $cookies, Restangular, $routeParams, $location,$stateParams) {
 
       $scope.global = Global;
 
@@ -23,7 +23,7 @@
       // Keep a copy of original ridesahare details
       $scope.deviceOrig = {};
 
-      Restangular.one('devices').one($routeParams.deviceId).get().then(function (device) {
+      Restangular.one('devices').one($stateParams.deviceId).get().then(function (device) {
         $scope.device = device;
         $scope.deviceOrig = _.pick(device, 'title', 'content');
 
@@ -60,7 +60,7 @@
 
         device.put().then(
           function () {
-            $location.path('/devices/' + device._id);
+            $location.path('/app/devices-list');
           },
           function (error) {
 
@@ -92,7 +92,7 @@
         device.remove().then(
           function () {
 
-            $location.path('/devices');
+            $location.path('/app/devices-list');
             /*
              for (var i in $scope.devices) {
              if ($scope.devices[i] === device) {

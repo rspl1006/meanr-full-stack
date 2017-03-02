@@ -13,7 +13,9 @@
         'meanr.controllers',
         'meanr.directives',
         'meanr.factory',
-        'meanr.services'
+        'meanr.services',
+        'meanr.service.global',
+        'meanr.service.go'
     ])
     .run(function (gettextCatalog) {
       gettextCatalog.currentLanguage = 'English';
@@ -34,10 +36,10 @@
     });
 
   // Create application services module and define the dependencies
-  angular.module('meanr.services', [
-    'meanr.service.global',
-    'meanr.service.go'
-  ]);
+//  angular.module('meanr.services', [
+//    'meanr.service.global',
+//    'meanr.service.go'
+//  ]);
 
   angular.module('meanr')
     .config(function (RestangularProvider) {
@@ -96,7 +98,7 @@ app.config(function($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, ASS
                         controller: 'DevicesCreateCtrl'
 		}).
 		state('app.devices-edit', {
-			url: '/devices-edit',
+			url: '/devices-edit/:deviceId',
 			templateUrl: appHelper.templatePath('devices/edit'),
                         controller: 'DevicesEditCtrl'
 		}).

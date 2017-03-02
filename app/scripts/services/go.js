@@ -3,7 +3,7 @@
 
   // Service module to locate to a new path or reload if requested path is the same as the current path
   angular.module('meanr.service.go', [])
-    .factory('Go', function ($window, $location, $route, $routeParams, Global) {
+    .factory('Go', function ($window, $location, $route, $routeParams, Global,$state) {
 
       var global = Global;
 
@@ -18,7 +18,7 @@
         to: function (path, param, query, pageNumber) {
 
           if (param) {
-            path = path + '/' + param;
+            path = path + '/:' + param;
           }
 
           // If path is same as current view reload else load view
@@ -34,8 +34,9 @@
             if (pageNumber) {
               global.setSessionState('pageNumber', +pageNumber);
             }
-
-            $location.path(path);
+                            debugger;
+            $state.go(path, { deviceId: param });
+//            $location.path(path);
 
           }
         },

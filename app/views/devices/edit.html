@@ -1,5 +1,126 @@
+<page-title ng-if="layoutOptions.pageTitles" title="Edit Device" description="Edit Devices"></page-title>
+
+
 <div class="row">
-    <div class="small-8 columns" data-ng-show="global.currentUser()._id == device.user._id">
+	<div class="col-sm-12">
+
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">Edit device</h3>
+				<div class="panel-options">
+					<a href="" data-toggle="panel">
+						<span class="collapse-icon">&ndash;</span>
+						<span class="expand-icon">+</span>
+					</a>
+					<a href="" data-toggle="remove">
+						&times;
+					</a>
+				</div>
+			</div>
+			<div class="panel-body">
+
+				<form
+                                    name="deviceForm"
+                                    id="deviceForm"
+                                    novalidate="novalidate"
+                                    data-ng-submit="update()"
+                                    late-validate-form
+                                    display-server-side-errors
+                                    class="form-horizontal ng-pristine ng-valid">
+
+					<div class="form-group">
+						<label class="col-sm-2 control-label" for="client_sw_no">Client SW No</label>
+
+						<div class="col-sm-10">
+							<input type="text"
+                                                                name="client_sw_no"
+                                                                id="client_sw_no"
+                                                                ng-model="device.client_sw_no"
+                                                                ng-minlength="2"
+                                                                ng-maxlength="50"
+                                                                ng-required="true"
+                                                                clear-server-side-validation
+                                                               class="form-control" placeholder="Client SW No">
+						</div>
+                                                <small class="error" ng-show="showClientSideValidationErrors(deviceForm.client_sw_no, 'minlength')">* Please use at least 2 characters
+                                                </small>
+					</div>
+                                    
+                                        <div class="form-group-separator"></div>
+
+					<div class="form-group">
+						<label class="col-sm-2 control-label" for="client_dev_no">Client Dev No</label>
+
+						<div class="col-sm-10">
+							<input type="text"
+                                                                name="client_dev_no"
+                                                                id="client_dev_no"
+                                                                ng-model="device.client_dev_no"
+                                                                ng-minlength="2"
+                                                                ng-maxlength="50"
+                                                                ng-required="true"
+                                                                clear-server-side-validation
+                                                               class="form-control" placeholder="Client Dev No">
+						</div>
+                                                <small class="error" ng-show="showClientSideValidationErrors(deviceForm.client_dev_no, 'minlength')">* Please use at least 2 characters
+                                                </small>                                                
+					</div>
+
+					<div class="form-group-separator"></div>
+                                        
+                                        <div class="form-group">
+						<label class="col-sm-2 control-label" for="client_public_key">Client Public Key</label>
+
+						<div class="col-sm-10">
+							<textarea
+                                                                name="client_public_key"
+                                                                id="client_public_key"
+                                                                ng-model="device.client_public_key"
+                                                                ng-minlength="30"
+                                                                ng-required="true"
+                                                                clear-server-side-validation
+                                                               class="form-control" placeholder="Client Public Key">
+                                                        </textarea>
+						</div>
+                                                <small class="error" ng-show="showClientSideValidationErrors(deviceForm.client_public_key, 'minlength')">* Please use at least 30 characters
+                                                </small>                                                
+					</div>
+                                        
+                                        <div class="form-group-separator"></div>
+                                        
+                                        <div class="form-group">
+						<label class="col-sm-2 control-label" for="client_certificate">Client Certificate</label>
+
+						<div class="col-sm-10">
+							<textarea
+                                                                name="client_certificate"
+                                                                id="client_certificate"
+                                                                ng-model="device.client_certificate"
+                                                                ng-minlength="30"
+                                                                ng-required="true"
+                                                                clear-server-side-validation
+                                                               class="form-control" placeholder="Client Certificate">
+                                                        </textarea>
+						</div>
+                                                <small class="error" ng-show="showClientSideValidationErrors(deviceForm.client_certificate, 'minlength')">* Please use at least 30 characters
+                                                </small>                                                
+					</div>
+                                        
+                                        <div class="form-group">
+						<button type="submit" class="btn btn-info btn-single pull-right" translate>Update</button>
+                                                <button type="button" id="delete" class="button tiny" ng-click="remove(device)" translate>Delete</button>
+					</div>
+
+
+				</form>
+
+			</div>
+		</div>
+
+	</div>
+</div>
+<div class="row">
+    <div class="small-8 columns">
 
         <form
                 name="deviceForm"
