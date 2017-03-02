@@ -1,37 +1,73 @@
+
+
+	<page-title ng-if="layoutOptions.pageTitles" title="Devices" description="Manage Devices"></page-title>
+
+
+<!-- Table Styles -->
 <div class="row">
-    <div class="small-8 columns">
-
-        <p></p>
-        <table id="devices">
-
-            <thead>
-                <tr>
-                    <th translate>Client SW No</th>
-                    <th translate>Create Date</th>
-                </tr>
-            </thead>
-
-            <tbody>
-
-            <tr data-ng-hide="!devices || devices.length">
-                <td colspan="2">
-                    <p translate>There are no devices yet.</p>
-
-                    <p ng-show="global.isSignedIn()"><span translate>Why don't you</span> <a href="/#!/devices/create" translate>Create One</a>?</p>
-                </td>
-            </tr>
-
-            <tr ng-repeat="device in devices" ng-click="go.to('/devices', device._id, 'back')">
-                <td>{{ device.client_sw_no }}</td>
-                <td nowrap="nowrap"> {{ device.created_at | date:'fullDate' }}</td>
-            </tr>
-
-            </tbody>
-
-        </table>
-    </div>
-
-    <div class="small-4 columns">
-    </div>
-
+	<div class="col-md-12">
+	
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">List - Devices</h3>
+				
+				<div class="panel-options">
+					<a href="">
+						<i class="linecons-cog"></i>
+					</a>
+					
+					<a href="" data-toggle="panel">
+						<span class="collapse-icon">&ndash;</span>
+						<span class="expand-icon">+</span>
+					</a>
+					
+					<a href="" data-toggle="reload">
+						<i class="fa-rotate-right"></i>
+					</a>
+					
+					<a href="" data-toggle="remove">
+						&times;
+					</a>
+				</div>
+			</div>
+			<div class="panel-body panel-border">
+			
+				<div class="row">
+					<div class="col-sm-12">
+					
+						<!-- Table Model 2 -->
+						<strong>Devices</strong>
+						
+						<table class="table table-model-2 table-hover">
+							<thead>
+								<tr>
+									<th>#</th>
+									<th>Client SW No</th>
+									<th>Create Date</th>
+								</tr>
+							</thead>
+							
+							<tbody>
+								<tr data-ng-hide="!devices || devices.length">
+									<td colspan="3">
+                                                                            There are no devices found
+                                                                        </td>
+								</tr>
+                                                                
+                                                                <tr ng-repeat="device in devices" ng-click="go.to('/devices-edit', device._id, 'back')">
+                                                                    <td>{{$index + 1}}</td>
+                                                                    <td>{{ device.client_sw_no }}</td>
+                                                                    <td nowrap="nowrap"> {{ device.created_at | date:'fullDate' }}</td>
+                                                                </tr>
+							</tbody>
+						</table>
+					
+					</div>
+				</div>
+			
+			</div>
+			
+		</div>
+		
+	</div>
 </div>

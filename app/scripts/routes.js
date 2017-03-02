@@ -2,11 +2,11 @@
   'use strict';
 
 // Enable HTML5 Location Mode
-  angular.module('meanr')
-    .config(['$locationProvider', function ($locationProvider) {
-      $locationProvider.hashPrefix('!');
-    }
-    ]);
+//  angular.module('meanr')
+//    .config(['$locationProvider', function ($locationProvider) {
+//      $locationProvider.hashPrefix('!');
+//    }
+//    ]);
 
 // Application routing
   angular.module('meanr')
