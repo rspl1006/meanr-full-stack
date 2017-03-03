@@ -3,9 +3,11 @@
 
   // Main page controller
   angular.module('meanr')
-    .controller('DevicesEditCtrl', function ($scope, Global, $cookies, Restangular, $routeParams, $location,$stateParams) {
+    .controller('DevicesEditCtrl', function ($scope, Global, $cookies, Restangular, $routeParams, $location,$stateParams, Go) {
 
       $scope.global = Global;
+      
+      $scope.go = Go;
 
       // For upload image form
       $scope.csrfToken = $cookies['XSRF-TOKEN'];

@@ -44,6 +44,7 @@
 									<th>#</th>
 									<th>Client SW No</th>
 									<th>Create Date</th>
+									<th>Actions</th>
 								</tr>
 							</thead>
 							
@@ -54,10 +55,23 @@
                                                                         </td>
 								</tr>
                                                                 
-                                                                <tr ng-repeat="device in devices" ng-click="clickThis(device._id)">
+                                                                <tr ng-repeat="device in devices">
                                                                     <td>{{$index + 1}}</td>
                                                                     <td>{{ device.client_sw_no }}</td>
                                                                     <td nowrap="nowrap"> {{ device.created_at | date:'fullDate' }}</td>
+                                                                    <td>
+                                                                    <a  ng-click="clickThis(device._id)" class="btn btn-secondary btn-sm btn-icon icon-left">
+                                                                            Edit
+                                                                    </a>
+
+                                                                    <a ng-click="remove(device)" class="btn btn-danger btn-sm btn-icon icon-left">
+                                                                            Delete
+                                                                    </a>
+
+                                                                    <a ng-click="connectProcedureServere(device)" class="btn btn-info btn-sm btn-icon icon-left">
+                                                                            Connect
+                                                                    </a>
+                                                            </td>
                                                                 </tr>
 							</tbody>
 						</table>

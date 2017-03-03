@@ -34,10 +34,8 @@
             if (pageNumber) {
               global.setSessionState('pageNumber', +pageNumber);
             }
-                            debugger;
-            $state.go(path, { deviceId: param });
-//            $location.path(path);
-
+            
+            $state.go(path);
           }
         },
 

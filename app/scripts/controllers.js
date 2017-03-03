@@ -22,8 +22,15 @@ angular.module('meanr.controllers', []).
 		$rootScope.isLockscreenPage   = true;
 		$rootScope.isMainPage         = false;
 	}).
-	controller('MainCtrl', function($scope, $rootScope, $location, $layout, $layoutToggles, $pageLoadingBar)
+	controller('MainCtrl', function($scope, $rootScope, $location, $layout, $layoutToggles, $pageLoadingBar, Global, $state)
 	{
+                $scope.global = Global;
+                if(!$scope.global.isSignedIn() ){
+                    if($state.current.name != "login"){
+                        $state.go("login");
+                    }
+                }
+            
 		$rootScope.isLoginPage        = false;
 		$rootScope.isLightLoginPage   = false;
 		$rootScope.isLockscreenPage   = false;
@@ -222,7 +229,8 @@ angular.module('meanr.controllers', []).
 	controller('SidebarMenuCtrl', function($scope, $rootScope, $menuItems, $timeout, $location, $state, $layout,Global)
 	{
             $scope.not_loggedIn = false;
-            if(Global.isSignedIn()){
+            $scope.global = Global;
+            if($scope.global.isSignedIn()){
                 $scope.not_loggedIn = true;
             }
 

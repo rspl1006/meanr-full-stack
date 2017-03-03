@@ -10,7 +10,7 @@ var config = require('../../config/config'),
  * Sigin via AngularJS view
  */
 exports.signin = function (req, res) {
-  res.redirect('/#!/signin');
+  res.redirect('#/login');
 };
 
 /**
