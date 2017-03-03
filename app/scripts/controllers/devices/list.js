@@ -23,12 +23,12 @@
           
       }
       
-      $scope.remove = function (device) {
-
+      $scope.remove = function (devicePass) {
+Restangular.one('devices').one(devicePass._id).get().then(function (device) {
         device.remove().then(
           function () {
 
-            $location.path('/app/devices-list');
+            
             /*
              for (var i in $scope.devices) {
              if ($scope.devices[i] === device) {
@@ -47,7 +47,8 @@
            }*/
 
         );
-
+});
+$state.go('app.devices-list');
       };
 
 

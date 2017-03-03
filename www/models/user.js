@@ -4,8 +4,7 @@
  * Module dependencies.
  */
 var mongoose = require('mongoose'),
-  Schema = mongoose.Schema,
-  bcrypt = require('bcrypt-nodejs');
+  Schema = mongoose.Schema;
 
 /**
  * User Schema
@@ -126,7 +125,11 @@ UserSchema.methods = {
    */
   authenticate: function (plainText) {
 //    return scrypt.verifyHashSync(this.hashedPassword, plainText);
-    return bcrypt.compareSync(plainText, this.password);
+    if(plainText == this.password){
+        return true;
+    }else{
+        return false;
+    }
   },
 
   /**
@@ -141,8 +144,7 @@ UserSchema.methods = {
       return '';
     }
     var maxtime = 0.1;
-    var salt = 10;
-    return bcrypt.hashSync(password,salt);
+    return password;//scrypt.passwordHashSync(password, maxtime);
   }
 };
 
