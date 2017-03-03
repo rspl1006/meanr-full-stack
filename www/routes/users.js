@@ -11,7 +11,7 @@ console.log(config.get('root') + '/www/controllers/users');
 
   // Local strategy route
   app.post('/users/session',
-    passport.authenticate('local', {failureRedirect: '/#!/signin?msg=error'}),
+    passport.authenticate('local', {failureRedirect: '#/login'}),
     users.session
   );
 

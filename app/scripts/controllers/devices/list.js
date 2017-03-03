@@ -14,7 +14,9 @@
       });
       
       $scope.clickThis=function(params) {
-            $state.go("app.devices-edit", { deviceId: params });
+            if($scope.global.isSignedIn()){
+                $state.go("app.devices-edit", { deviceId: params });
+            }
       }
 
 

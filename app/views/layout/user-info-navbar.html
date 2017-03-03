@@ -319,11 +319,11 @@
 
 		</li>
 
-		<li class="dropdown user-profile">
+		<li class="dropdown user-profile" ng-show="global.isSignedIn()">
 			<a href="" class="dropdown-toggle" data-toggle="dropdown">
 				<img src="assets/images/user-4.png" alt="user-image" class="img-circle img-inline userpic-32" width="28" />
 				<span>
-					John Smith
+					{{global.currentUser().name}}
 					<i class="fa-angle-down"></i>
 				</span>
 			</a>
@@ -354,9 +354,33 @@
 					</a>
 				</li>
 				<li class="last">
-					<a href="extra-lockscreen.html">
+					<a href="/signout" >
 						<i class="fa-lock"></i>
 						Logout
+					</a>
+				</li>
+			</ul>
+		</li>
+                
+                <li class="dropdown user-profile" ng-show="!global.isSignedIn()">
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown">
+				<img src="assets/images/user-4.png" alt="user-image" class="img-circle img-inline userpic-32" width="28" />
+				<span>
+					{{global.currentUser().name}}
+					<i class="fa-angle-down"></i>
+				</span>
+			</a>
+			<ul class="dropdown-menu user-profile-menu list-unstyled">
+				<li>
+					<a href="#/login">
+						<i class="fa-edit"></i>
+						Login
+					</a>
+				</li>
+				<li>
+					<a href="#/signup">
+						<i class="fa-wrench"></i>
+						Sign Up
 					</a>
 				</li>
 			</ul>

@@ -219,13 +219,17 @@ angular.module('meanr.controllers', []).
 //		}
 
 	}).
-	controller('SidebarMenuCtrl', function($scope, $rootScope, $menuItems, $timeout, $location, $state, $layout)
+	controller('SidebarMenuCtrl', function($scope, $rootScope, $menuItems, $timeout, $location, $state, $layout,Global)
 	{
+            $scope.not_loggedIn = false;
+            if(Global.isSignedIn()){
+                $scope.not_loggedIn = true;
+            }
 
 		// Menu Items
 		var $sidebarMenuItems = $menuItems.instantiate();
 
-		$scope.menuItems = $sidebarMenuItems.prepareSidebarMenu().getAll();
+		$scope.menuItems = $sidebarMenuItems.prepareSidebarMenu($scope.not_loggedIn).getAll();
 
 		// Set Active Menu Item
 		$sidebarMenuItems.setActive( $location.path() );

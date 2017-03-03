@@ -69,21 +69,16 @@
 
 
 app.config(function($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, ASSETS){
-
-	$urlRouterProvider.otherwise('/app/dashboard-variant-1');
-
+    
+        $urlRouterProvider.otherwise('/app/dashboard-variant-1');
+        
 	$stateProvider.
 		// Main Layout Structure
 		state('app', {
 			abstract: true,
 			url: '/app',
 			templateUrl: appHelper.templatePath('layout/app-body'),
-			controller: function($rootScope){
-				$rootScope.isLoginPage        = false;
-				$rootScope.isLightLoginPage   = false;
-				$rootScope.isLockscreenPage   = false;
-				$rootScope.isMainPage         = true;
-			}
+                        controller: 'MainCtrl'
 		}).
 
 		// Dashboards
@@ -101,6 +96,11 @@ app.config(function($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, ASS
 			url: '/devices-edit/:deviceId',
 			templateUrl: appHelper.templatePath('devices/edit'),
                         controller: 'DevicesEditCtrl'
+		}).
+		state('signup', {
+			url: '/signup',
+			templateUrl: appHelper.templatePath('users/signup'),
+                        controller: 'UsersCtrl'
 		}).
 		state('app.dashboard-variant-1', {
 			url: '/dashboard-variant-1',
@@ -838,15 +838,7 @@ app.config(function($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, ASS
 		state('login', {
 			url: '/login',
 			templateUrl: appHelper.templatePath('login'),
-			controller: 'LoginCtrl',
-			resolve: {
-				resources: function($ocLazyLoad){
-					return $ocLazyLoad.load([
-						ASSETS.forms.jQueryValidate,
-						ASSETS.extra.toastr,
-					]);
-				},
-			}
+			controller: 'UsersCtrl'
 		}).
 		state('login-light', {
 			url: '/login-light',

@@ -81,7 +81,7 @@ angular.module('meanr.services', []).
 			return this.menuItems;
 		};
 
-		this.prepareSidebarMenu = function()
+		this.prepareSidebarMenu = function($logged)
 		{
 			var dashboard    = this.addItem('Dashboard', 		'/app/dashboard', 			'linecons-cog');
 			var devices    = this.addItem('Devices', 		'/app/devices', 			'linecons-database');
@@ -95,7 +95,9 @@ angular.module('meanr.services', []).
 
                                 // Devices Managment
                                 devices.addItem('List', '-/list');
-                                devices.addItem('Add', 	'-/create');
+                                if($logged){
+                                    devices.addItem('Add', 	'-/create');
+                                }
 
 				
 

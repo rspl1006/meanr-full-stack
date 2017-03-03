@@ -6,7 +6,7 @@
 			<img src="assets/images/user-4.png" width="60" height="60" class="img-circle img-corona" alt="user-pic" />
 
 			<span>
-				<strong>John Smith</strong>
+				<strong>{{global.currentUser().name}}</strong>
 				Page admin
 			</span>
 		</a>
@@ -24,10 +24,10 @@
 					Mailbox
 				</a>
 			</li>
-			<li class="logout-link">
-				<a href="#/login" title="Log out">
+			<li class="logout-link" ng-show="global.isSignedIn()">
+                                    <a href="/signout" title="Log out">
 					<i class="fa-power-off"></i>
-				</a>
+                                    </a>
 			</li>
 		</ul>
 	</div>
