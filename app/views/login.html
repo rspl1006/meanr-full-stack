@@ -4,6 +4,20 @@
 	<div class="row" data-ng-controller="UsersCtrl" data-ng-init="showLoginErrorMessage()">
 
 		<div class="col-sm-6">
+                    <script type="text/javascript">
+				jQuery(document).ready(function($)
+				{
+					// Reveal Login form
+					setTimeout(function(){ $(".fade-in-effect").addClass('in'); }, 1);
+
+
+
+					// Set Form focus
+					$("form#login .form-group:has(.form-control):first .form-control").focus();
+				});
+			</script>
+
+		
 
 			<!-- Errors container -->
 			<div class="errors-container">
