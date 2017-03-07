@@ -14,6 +14,8 @@ module.exports = function (config, app) {
   // JSON API
 
   app.get('/api/v1/devices', devices.all);
+  
+  app.get('/api/v1/devices/runpython', devices.runpython);
 
   app.get('/api/v1/devices/:deviceId', devices.show);
 

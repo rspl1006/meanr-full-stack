@@ -10,6 +10,7 @@
         'ui.router',
         'ui.bootstrap',
         'oc.lazyLoad',
+        'btford.socket-io',
         'meanr.controllers',
         'meanr.directives',
         'meanr.factory',
@@ -60,6 +61,34 @@
           return $q.reject(rejection);
         }
       };
+    }).
+    factory('mySocket', function ($rootScope) {
+        var namespace='/pod';
+        var socket = io.connect('https://52.36.76.56:5000'+namespace);
+//        var socket = io.connect('http://localhost:5000'+namespace);
+        socket.on('frompodctrl',function(msg){
+                    if (msg == "Pod Connected") {
+                        console.log("TTTT:" + msg);
+                        
+                    }
+                    else if (msg == "Pod client Disconnected") {
+
+                    } else {
+                        console.log('Pod control sent:' + msg);
+                    }
+
+        });   
+//        socket.on('frompoddata', function(msg){
+//            if (msg!== undefined) {
+//              console.log("FFFFF:"+msg);
+//              $(".procedureServer").append("<li>"+msg+"</li>");
+//            }
+//            else {
+//                console.log("Nothing");
+//            }
+//          });
+        
+        return socket;
     });
 
   angular.module('meanr')

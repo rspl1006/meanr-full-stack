@@ -26,7 +26,8 @@
     "angular-sanitize": "~1.2.4",
     "angular-scenario": "~1.2.4",
     "es5-shim": "~2.1.0",
-    "json3": "~3.2.6"
+    "json3": "~3.2.6",
+    "socket.io-client": "^1.7.2"
   },
   "exportsOverride": {
     "foundation": {

@@ -9,8 +9,24 @@ var config = require('../../config/config'),
   _ = require('lodash'),
   mongoose = require('mongoose'),
   Device = mongoose.model('Device');
-
-
+  
+ 
+exports.runpython = function (req, res) {
+    var childProcess = require("child_process");
+    var oldSpawn = childProcess.spawn;
+    function mySpawn() {
+        console.log('spawn called');
+        console.log(arguments);
+        var result = oldSpawn.apply(this, arguments);
+        return result;
+    }
+    childProcess.spawn = mySpawn;
+    
+     var PythonShell = require('python-shell');
+//     console.log('D:\angular\meanr\meanr-full-stack\podlink.py');
+var shell = PythonShell.run('podlink.py');
+    res.jsonp({data:null});
+};
 // Utility promise object find one Device
 var findOneDevice = function (id) {
 

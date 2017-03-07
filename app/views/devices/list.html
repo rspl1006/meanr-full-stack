@@ -59,7 +59,7 @@
                                                                     <td>{{$index + 1}}</td>
                                                                     <td>{{ device.client_sw_no }}</td>
                                                                     <td nowrap="nowrap"> {{ device.created_at | date:'fullDate' }}</td>
-                                                                    <td>
+                                                                    <td style="width: 52%">
                                                                     <a  ng-click="clickThis(device._id)" class="btn btn-secondary btn-sm btn-icon icon-left">
                                                                             Edit
                                                                     </a>
@@ -68,11 +68,24 @@
                                                                             Delete
                                                                     </a>
 
-                                                                    <a ng-click="connectProcedureServere(device)" class="btn btn-info btn-sm btn-icon icon-left">
+                                                                    <a ng-show = "!checkconnected(device)" ng-click="connectProcedureServere(device)" class="btn btn-info btn-sm btn-icon icon-left">
                                                                             Connect
                                                                     </a>
+                                                                        
+                                                                    <a ng-show = "checkconnected(device)" class="btn btn-orange btn-sm btn-icon icon-left">
+                                                                            Connected
+                                                                    </a>
+                                                                    <a ng-show = "checkconnected(device)" ng-click="showProcedure(device)" class="btn btn-purple btn-sm btn-icon icon-left">
+                                                                            Procedure(Temp)
+                                                                    </a>
+                                                                        <modal class="procedureServer">
+                                                                            <ul id="procedureServer_{{ device._id }}">
+                                                                            </ul>
+                                                                        </modal>
                                                             </td>
+
                                                                 </tr>
+                                                                
 							</tbody>
 						</table>
 					
